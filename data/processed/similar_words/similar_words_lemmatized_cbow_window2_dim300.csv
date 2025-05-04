@@ -1,0 +1,8 @@
+Target Word,Most Similar Words
+house,"story(0.68), graveled(0.66), closed(0.65), floorplan(0.65), juke(0.64)"
+apartment,"flat(0.77), villa(0.72), property(0.72), townhome(0.69), condo(0.68)"
+room,"den(0.79), formal(0.77), nook(0.77), sunroom(0.76), adjacent(0.76)"
+kitchen,"gourmet(0.75), combined(0.72), delight(0.71), impress(0.71), sleek(0.70)"
+bathroom,"bath(0.90), sized(0.78), downstairs(0.77), arrangement(0.76), separated(0.76)"
+garden,"communal(0.75), gazebo(0.74), rooftop(0.72), courtyard(0.72), swimming(0.71)"
+price,"eur(0.88), agent(0.86), usd(0.86), purchase(0.86), charged(0.85)"

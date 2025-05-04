@@ -1,0 +1,8 @@
+Target Word,Most Similar Words
+house,"cultivated(0.70), story(0.68), detached(0.66), closed(0.66), partially(0.64)"
+apartment,"property(0.69), flat(0.66), duplex(0.63), condo(0.63), villa(0.63)"
+room,"den(0.80), adjacent(0.77), sunroom(0.76), study(0.75), formal(0.75)"
+kitchen,"gourmet(0.74), countertop(0.74), granite(0.73), sleek(0.72), combined(0.72)"
+bathroom,"bath(0.90), downstairs(0.79), sized(0.78), combo(0.74), upstairs(0.72)"
+garden,"pool(0.83), lovely(0.82), swimming(0.80), pergola(0.80), gazebo(0.78)"
+price,"eur(0.89), credit(0.88), may(0.87), subject(0.87), priced(0.86)"

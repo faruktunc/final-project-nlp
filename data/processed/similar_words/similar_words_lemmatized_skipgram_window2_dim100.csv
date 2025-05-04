@@ -1,0 +1,8 @@
+Target Word,Most Similar Words
+house,"casita(0.59), cottage(0.59), greet(0.58), phase(0.58), sunday(0.58)"
+apartment,"villa(0.70), flat(0.67), townhome(0.62), duplex(0.62), compact(0.62)"
+room,"rm(0.83), den(0.79), kitchenette(0.76), sunken(0.75), optional(0.75)"
+kitchen,"sunlit(0.76), sleek(0.75), sofa(0.75), eat(0.75), gourmet(0.75)"
+bathroom,"ba(0.82), bath(0.79), combo(0.79), dressing(0.78), murphy(0.77)"
+garden,"pergola(0.66), gazebo(0.65), grassy(0.64), communal(0.64), soaking(0.63)"
+price,"usd(0.76), indicated(0.75), competitive(0.75), charged(0.74), approximate(0.73)"

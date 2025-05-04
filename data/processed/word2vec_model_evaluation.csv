@@ -1,0 +1,17 @@
+filename,is_lemmatized,model_type,window_size,vector_size,vocabulary_size
+lemmatized_cbow_window2_dim100.model,True,CBOW,2,100,14051
+lemmatized_cbow_window2_dim300.model,True,CBOW,2,300,14051
+lemmatized_cbow_window4_dim100.model,True,CBOW,4,100,14051
+lemmatized_cbow_window4_dim300.model,True,CBOW,4,300,14051
+lemmatized_skipgram_window2_dim100.model,True,Skip-gram,2,100,14051
+lemmatized_skipgram_window2_dim300.model,True,Skip-gram,2,300,14051
+lemmatized_skipgram_window4_dim100.model,True,Skip-gram,4,100,14051
+lemmatized_skipgram_window4_dim300.model,True,Skip-gram,4,300,14051
+stemmed_cbow_window2_dim100.model,False,CBOW,2,100,11686
+stemmed_cbow_window2_dim300.model,False,CBOW,2,300,11686
+stemmed_cbow_window4_dim100.model,False,CBOW,4,100,11686
+stemmed_cbow_window4_dim300.model,False,CBOW,4,300,11686
+stemmed_skipgram_window2_dim100.model,False,Skip-gram,2,100,11686
+stemmed_skipgram_window2_dim300.model,False,Skip-gram,2,300,11686
+stemmed_skipgram_window4_dim100.model,False,Skip-gram,4,100,11686
+stemmed_skipgram_window4_dim300.model,False,Skip-gram,4,300,11686
