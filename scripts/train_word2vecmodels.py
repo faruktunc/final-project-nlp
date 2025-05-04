@@ -1,5 +1,6 @@
 # improved_word2vec_training.py
 import os
+import time
 import pandas as pd
 from gensim.models import Word2Vec
 import logging
@@ -12,6 +13,9 @@ base_dir = os.path.dirname(os.path.abspath(__file__))
 processed_data_path = os.path.join(base_dir, "..", "data", "processed", "processed_real_estate.csv")
 models_dir = os.path.join(base_dir, "..", "models")
 os.makedirs(models_dir, exist_ok=True)
+
+# Initialize list to store model training results
+model_results = []
 
 # Read preprocessed data
 print("Loading preprocessed data...")
@@ -73,13 +77,16 @@ def train_and_save_model(corpus, params, name_prefix):
     """Train and save a Word2Vec model with given parameters"""
     if not corpus or len(corpus) == 0:
         print(f"WARNING: Empty corpus for {name_prefix}. Skipping model training.")
-        return
+        return None, None, None, None
 
     # Set skip-gram parameter (sg=1 for skip-gram, sg=0 for CBOW)
     sg = 1 if params['model_type'] == 'skipgram' else 0
 
     print(
         f"Training {name_prefix} model: {params['model_type']}, window={params['window']}, dim={params['vector_size']}")
+
+    # Start timing the training process
+    start_time = time.time()
 
     # Train model
     model = Word2Vec(
@@ -91,6 +98,9 @@ def train_and_save_model(corpus, params, name_prefix):
         workers=4  # Use multiple cores for faster training
     )
 
+    # Calculate training time
+    training_time = time.time() - start_time
+
     # Save model
     filename = f"{name_prefix}_{params['model_type']}_window{params['window']}_dim{params['vector_size']}.model"
     model_path = os.path.join(models_dir, filename)
@@ -99,14 +109,81 @@ def train_and_save_model(corpus, params, name_prefix):
     # Get some basic model statistics
     vocab_size = len(model.wv.index_to_key)
     print(f"Model saved: {filename} (vocabulary size: {vocab_size})")
+    print(f"Training time: {training_time:.2f} seconds ({training_time / 60:.2f} minutes)")
 
-    return model_path
+    # Return model info for summary table
+    return model_path, filename, vocab_size, training_time
 
 
 # Train all models
 print("\nTraining Word2Vec models...")
-for param in parameters:
-    lemma_model_path = train_and_save_model(lemmatized_corpus, param, "lemmatized")
-    stem_model_path = train_and_save_model(stemmed_corpus, param, "stemmed")
 
+# Overall timing for all models
+overall_start_time = time.time()
+
+for param in parameters:
+    # Train lemmatized model
+    lemma_model_path, lemma_filename, lemma_vocab_size, lemma_training_time = train_and_save_model(
+        lemmatized_corpus, param, "lemmatized")
+
+    if lemma_filename:
+        # Add lemmatized model results to summary
+        model_results.append({
+            "Model Adı": lemma_filename,
+            "Model Tipi": param['model_type'],
+            "İşlenen Veri": "Lemmatized",
+            "Pencere (Window)": param['window'],
+            "Vektör Boyutu": param['vector_size'],
+            "Eğitim Süresi (sn)": f"{lemma_training_time:.2f}",
+            "Kelime Sayısı": lemma_vocab_size
+        })
+
+    # Train stemmed model
+    stem_model_path, stem_filename, stem_vocab_size, stem_training_time = train_and_save_model(
+        stemmed_corpus, param, "stemmed")
+
+    if stem_filename:
+        # Add stemmed model results to summary
+        model_results.append({
+            "Model Adı": stem_filename,
+            "Model Tipi": param['model_type'],
+            "İşlenen Veri": "Stemmed",
+            "Pencere (Window)": param['window'],
+            "Vektör Boyutu": param['vector_size'],
+            "Eğitim Süresi (sn)": f"{stem_training_time:.2f}",
+            "Kelime Sayısı": stem_vocab_size
+        })
+
+# Calculate total time for all models
+total_time = time.time() - overall_start_time
+print(f"\nTotal training time for all models: {total_time:.2f} seconds ({total_time / 60:.2f} minutes)")
 print("\nTraining complete! All models saved to:", models_dir)
+
+# Print model summary table without using tabulate
+print("\n\n" + "=" * 110)
+print("MODEL EĞİTİM SONUÇLARI ÖZET TABLOSU")
+print("=" * 110)
+
+# Define column headers and widths
+headers = ["Model Adı", "Model Tipi", "İşlenen Veri", "Pencere", "Vektör Boyutu", "Eğitim Süresi (sn)", "Kelime Sayısı"]
+widths = [40, 10, 13, 8, 15, 18, 15]
+
+# Print header row
+header_format = ''.join(f'{{:{w}}}' for w in widths)
+print(header_format.format(*headers))
+print("-" * 110)
+
+# Print each data row
+for result in model_results:
+    row = [
+        result["Model Adı"],
+        result["Model Tipi"],
+        result["İşlenen Veri"],
+        str(result["Pencere (Window)"]),
+        str(result["Vektör Boyutu"]),
+        result["Eğitim Süresi (sn)"],
+        str(result["Kelime Sayısı"])
+    ]
+    print(header_format.format(*row))
+
+print("=" * 110)

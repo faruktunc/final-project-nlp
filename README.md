@@ -122,7 +122,8 @@ python scripts/similarity_filter_code.py
 ├── models/            # Eğitilmiş Word2Vec modelleri
 ├── plots/             # Oluşturulan grafikler ve görselleştirmeler
 ├── scripts/           # Python scriptleri
-└── venv/             # Sanal ortam
+├── venv/              # Sanal ortam
+└── visualizations/    # Model Görselleştirmeleri
 ```
 
 
