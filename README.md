@@ -2,7 +2,12 @@
 
 ## Proje Genel Bakış
 Bu proje, emlak ilanları verilerini analiz etmek için Doğal Dil İşleme (NLP) tekniklerini uygulamaktadır. Proje, metin ön işleme, Zipf yasası analizi, TF-IDF vektörleştirme ve emlak açıklamaları üzerinde Word2Vec modellerinin eğitimini içermektedir.
-
+### Hariç bırakılan dosyalar
+100 MB boyutunu geçtiği için aşağıdaki dosyalar hariç bırakılmıştır bu dosyaları elde etmek için [TF-IDF vektörleştirme](#5-tf-idf-vektörleştirme) adımına gidiniz. 
+```
+data/processed/tfidf_lemmatized.csv
+data/processed/tfidf_stemmed.csv
+```
 ## Veri Seti Amacı ve Uygulamaları
 Bu projede kullanılan emlak veri seti şunlar için kullanılabilir:
 - Emlak açıklamalarındaki yaygın kalıpları ve trendleri analiz etme
