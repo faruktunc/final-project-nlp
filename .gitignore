@@ -1,5 +1,6 @@
-# Sanal ortam klasörü
+# Sanal ortam klasörleri
 venv/
+.venv/
 
 # Python bytecode dosyaları
 __pycache__/
